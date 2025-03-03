@@ -1,9 +1,9 @@
 package com.horizon.ebooklibrary.model;
 
 public class Book {
-    private String title;
-    private String author;
-    private String description;
+    private final String title;
+    private final String author;
+    private final String description;
 
     public Book(String title, String author, String description) {
         this.title = title;
