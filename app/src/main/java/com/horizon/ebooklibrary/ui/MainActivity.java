@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,17 +38,23 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerViewBooks);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: Consider changing to a GridLayoutManager.
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // TODO: Consider changing to a GridLayoutManager.
 
 
         // Initialize book list and add sample books
-        bookList = new ArrayList<>();
-        bookList.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", "this is a description"));
-        bookList.add(new Book("To Kill a Mockingbird", "Harper Lee", "this is a description"));
-        bookList.add(new Book("1984", "George Orwell", "this is a description"));
+        loadBooks();
 
         // Initialize adapter and attach it
         bookAdapter = new BookAdapter(this, bookList);
         recyclerView.setAdapter(bookAdapter);
+    }
+
+    private void loadBooks() {
+        bookList = new ArrayList<>();
+        bookList.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", "A novel set in the Roaring Twenties.", R.drawable.ic_book_placeholder));
+        bookList.add(new Book("To Kill a Mockingbird", "Harper Lee", "A powerful novel about racism and justice.", R.drawable.ic_book_placeholder));
+        bookList.add(new Book("1984", "George Orwell", "A dystopian novel about totalitarianism.", R.drawable.ic_book_placeholder));
+        bookList.add(new Book("Moby-Dick", "Herman Melville", "A tale of obsession and revenge at sea.", R.drawable.ic_book_placeholder));
+        bookList.add(new Book("Pride and Prejudice", "Jane Austen", "A classic romantic novel.", R.drawable.ic_book_placeholder));
     }
 }

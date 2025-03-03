@@ -4,11 +4,13 @@ public class Book {
     private final String title;
     private final String author;
     private final String description;
+    private final int coverImage; // Resource ID for local images.
 
-    public Book(String title, String author, String description) {
+    public Book(String title, String author, String description, int coverImage) {
         this.title = title;
         this.author = author;
         this.description = description;
+        this.coverImage = coverImage;
     }
 
     public String getTitle() {
@@ -21,5 +23,9 @@ public class Book {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getCoverImage() {
+        return coverImage;
     }
 }

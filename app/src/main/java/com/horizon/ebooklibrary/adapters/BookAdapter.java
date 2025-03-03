@@ -1,10 +1,10 @@
 package com.horizon.ebooklibrary.adapters;
 
-import android.content.ClipData;
 import android.view.ViewGroup;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,12 +38,15 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
      * findViewById links these to book_item.xml.
      */
     public static class BookViewHolder extends RecyclerView.ViewHolder {
-        TextView textTitle, textAuthor;
+        TextView titleTextView, authorTextView, descriptionTextView;
+        ImageView coverImageView;
 
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
-            textTitle = itemView.findViewById(R.id.textTitle);
-            textAuthor = itemView.findViewById(R.id.textAuthor);
+            titleTextView = itemView.findViewById(R.id.textViewTitle);
+            authorTextView = itemView.findViewById(R.id.textViewAuthor);
+            descriptionTextView = itemView.findViewById(R.id.textViewDescription);
+            coverImageView = itemView.findViewById(R.id.imageViewCover);
         }
     }
 
@@ -72,8 +75,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
      */
     public void onBindViewHolder(@NonNull BookAdapter.BookViewHolder holder, int position) {
         Book book = bookList.get(position);
-        holder.textTitle.setText(book.getTitle());
-        holder.textAuthor.setText(book.getAuthor());
+        holder.titleTextView.setText(book.getTitle());
+        holder.authorTextView.setText(book.getAuthor());
+        holder.descriptionTextView.setText(book.getDescription());
+        holder.coverImageView.setImageResource(book.getCoverImage()); // Set image from drawable
     }
 
     @Override
