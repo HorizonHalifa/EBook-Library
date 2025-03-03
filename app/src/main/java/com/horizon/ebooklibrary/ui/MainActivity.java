@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerViewBooks);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: Consider changing to a GridLayoutManager.
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         // Initialize book list and add sample books
@@ -51,6 +51,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadBooks() {
         bookList = new ArrayList<>();
+
+        bookList.add(new Book("סיפורה של מספרת הסיפורים"
+        , "חנה קריצמן",
+                "זהו תיאורו של הסיפור המרתק",
+                R.drawable.the_story_tellers_story));
+        bookList.add(new Book("התמודדות"
+                , "אורי כרמי",
+                "זהו תיאורו של הסיפור המרתק",
+                R.drawable.coping));
+        bookList.add(new Book("ממך למדתי ללכת"
+                , "ורד אזולאי",
+                "זהו תיאורו של הסיפור המרתק",
+                R.drawable.from_you_i_learned_to_walk));
+
+
         bookList.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", "A novel set in the Roaring Twenties.", R.drawable.ic_book_placeholder));
         bookList.add(new Book("To Kill a Mockingbird", "Harper Lee", "A powerful novel about racism and justice.", R.drawable.ic_book_placeholder));
         bookList.add(new Book("1984", "George Orwell", "A dystopian novel about totalitarianism.", R.drawable.ic_book_placeholder));
