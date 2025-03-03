@@ -26,7 +26,9 @@
             android:layout_height="wrap_content"
             android:text="Book Title"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1" /> <!-- Ensures title fits in one line -->
 
         <TextView
             android:id="@+id/textViewAuthor"
@@ -34,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="Author Name"
             android:textSize="16sp"
-            android:textColor="#666666"/>
+            android:textColor="@android:color/darker_gray"/>
 
         <TextView
             android:id="@+id/textViewDescription"
@@ -42,7 +44,9 @@
             android:layout_height="wrap_content"
             android:text="Author Name"
             android:textSize="12sp"
-            android:textColor="#666666"/>
+            android:textColor="@android:color/darker_gray"
+            android:maxLines="3"
+            android:ellipsize="end" /> <!-- Allows description to wrap but limits to 3 lines -->
 
     </LinearLayout>
 </LinearLayout>

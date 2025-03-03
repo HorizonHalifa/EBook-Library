@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerViewBooks);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // TODO: Consider changing to a GridLayoutManager.
+        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: Consider changing to a GridLayoutManager.
 
 
         // Initialize book list and add sample books
