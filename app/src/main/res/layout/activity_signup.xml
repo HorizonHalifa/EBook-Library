@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SignupActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        android:background="@color/white">
+
+        <!-- Name Field -->
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Email Field -->
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Password Field -->
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Signuo Button -->
+        <Button
+            android:id="@+id/buttonSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="@color/white"/>
+
+        <!-- Back Button -->
+        <Button
+            android:id="@+id/buttonBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back To Menu"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

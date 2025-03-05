@@ -1,6 +1,8 @@
 package com.horizon.ebooklibrary.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -34,12 +36,14 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Navigate to Login Screen
         buttonSignIn.setOnClickListener(v -> {
-            // TODO: Implement LoginActivity
+            Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
 
         // Navigate to Signup Screen
         buttonCreateAccount.setOnClickListener(v -> {
-            // TODO: Implement SignupActivity
+            Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 }
