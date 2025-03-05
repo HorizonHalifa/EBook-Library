@@ -12,21 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EBookLibrary"
         tools:targetApi="31">
-        <activity
-            android:name=".ui.PdfViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.BookDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity"
+
+        <!-- WelcomeActivity as the Launcher activity -->
+        <activity android:name=".ui.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- BookDetail Activity-->
+        <activity
+            android:name=".ui.BookDetailActivity"
+            android:exported="false"/>
+
+        <!-- PdfView Activity-->
+        <activity
+            android:name=".ui.PdfViewActivity"
+            android:exported="false"/>
+
+        <!-- MainActivity Activity-->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false"/>
+
+        <!-- Login and Signup Activities (No intent-filters needed yet)
+        <activity android:name=".ui.LoginActivity"
+        android:exported="false"/>
+        <activity android:name=".ui.SignupActivity"
+        android:exported="false"/> -->
+
+    </application>
 </manifest>
