@@ -1,5 +1,6 @@
 package com.horizon.ebooklibrary.adapters;
 
+import android.content.Intent;
 import android.view.ViewGroup;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.horizon.ebooklibrary.R;
 import com.horizon.ebooklibrary.model.Book;
+import com.horizon.ebooklibrary.ui.BookDetailActivity;
 
 import java.util.List;
 
@@ -79,6 +81,20 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         holder.authorTextView.setText(book.getAuthor());
         holder.descriptionTextView.setText(book.getDescription());
         holder.coverImageView.setImageResource(book.getCoverImage()); // Set image from drawable
+
+        // Handle book click event
+        holder.itemView.setOnClickListener(v -> {
+            /*
+             * When a book is clicked, it starts BookDetailActivity.
+             * Passes title, author, description and cover image to the next screen.
+             */
+             Intent intent = new Intent(context, BookDetailActivity.class);
+             intent.putExtra("title", book.getTitle());
+             intent.putExtra("author", book.getAuthor());
+             intent.putExtra("description", book.getDescription());
+             intent.putExtra("coverImage", book.getCoverImage());
+             context.startActivity(intent);
+        });
     }
 
     @Override
