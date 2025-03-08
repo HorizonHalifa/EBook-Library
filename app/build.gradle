@@ -35,7 +35,13 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.android.pdf.viewer
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+
+    //  Retrofit for API calls (to communicate with Spring Boot backend)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
 }
