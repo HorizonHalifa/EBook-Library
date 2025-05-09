@@ -2,9 +2,7 @@ package com.horizon.ebooklibrary.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -12,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.horizon.ebooklibrary.R;
+import com.horizon.ebooklibrary.service.FirebaseManager;
 
 /*
  * Displays Sign In and Create Account buttons.
@@ -31,6 +30,10 @@ public class WelcomeActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Call to the FCM setup
+        FirebaseManager.initializeFCM(this);
+
+        // Button click handlers
         buttonSignIn = findViewById(R.id.buttonSignIn);
         buttonCreateAccount = findViewById(R.id.buttonCreateAccount);
 

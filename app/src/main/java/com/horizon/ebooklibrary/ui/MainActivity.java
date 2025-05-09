@@ -3,6 +3,7 @@ package com.horizon.ebooklibrary.ui;
 import android.os.Bundle;
 
 import android.view.View;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -11,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.horizon.ebooklibrary.R;
 import com.horizon.ebooklibrary.adapters.BookAdapter;
 import com.horizon.ebooklibrary.model.Book;
@@ -40,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        FirebaseTokenService.printCurrentToken();
 
 
         // Initialize RecyclerView
@@ -85,8 +85,5 @@ public class MainActivity extends AppCompatActivity {
         readBooks.add(new Book("התמודדות", "אורי כרמי", "זהו תיאורו של הסיפור המרתק", R.drawable.coping));
         readBooks.add(new Book("ממך למדתי ללכת", "ורד אזולאי", "זהו תיאורו של הסיפור המרתק", R.drawable.from_you_i_learned_to_walk));
 
-        // Debugging logs
-        System.out.println("✅ Unread Books Count: " + unreadBooks.size());
-        System.out.println("✅ Read Books Count: " + readBooks.size());
     }
 }
