@@ -16,7 +16,8 @@ public interface AuthService {
     /**
      * Sends login requests to the backend
      * @param request LoginRequest object containing email and password
-     * @return Call that delivers a LoginResponse containing tokens and user role
+     * @return The response with access token, refresh token, and role
      */
+    @POST("/auth/login")
     Call<LoginResponse> login(@Body LoginRequest request);
 }

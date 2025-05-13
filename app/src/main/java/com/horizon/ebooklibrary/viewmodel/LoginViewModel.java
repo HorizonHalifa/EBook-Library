@@ -39,6 +39,7 @@ public class LoginViewModel extends ViewModel {
 
             @Override
             public void onError(String error) {
+                loginResult.postValue(null); // clear previous success state
                 errorMessage.postValue(error);
             }
         });

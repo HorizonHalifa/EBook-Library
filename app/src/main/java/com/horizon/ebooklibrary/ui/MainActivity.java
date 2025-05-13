@@ -17,6 +17,7 @@ import com.horizon.ebooklibrary.R;
 import com.horizon.ebooklibrary.adapters.BookAdapter;
 import com.horizon.ebooklibrary.model.Book;
 import com.horizon.ebooklibrary.service.FirebaseTokenService;
+import com.horizon.ebooklibrary.util.TokenManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+
+        // Initialize token manager
+        TokenManager.init(getApplicationContext());
 
         // Initialize RecyclerView
         recyclerViewUnreadBooks = findViewById(R.id.recyclerViewUnreadBooks);

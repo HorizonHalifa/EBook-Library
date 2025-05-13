@@ -14,21 +14,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
 import com.horizon.ebooklibrary.R;
-import com.horizon.ebooklibrary.model.LoginRequest;
-import com.horizon.ebooklibrary.model.LoginResponse;
-import com.horizon.ebooklibrary.network.ApiClient;
-import com.horizon.ebooklibrary.service.AuthService;
-import com.horizon.ebooklibrary.service.AuthService;
 import com.horizon.ebooklibrary.util.TokenManager;
 import com.horizon.ebooklibrary.viewmodel.LoginViewModel;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * LoginActivity is the UI for the user login.
@@ -96,6 +85,10 @@ public class LoginActivity extends AppCompatActivity {
             if(loginResponse != null) {
                 showToast("Login successful!");
                 navigateToMainScreen();
+
+                // TODO
+                // Optionally clear the success so this doesn't fire again on resume
+                // This requires exposing a clear method in the ViewModel
             }
         });
 

@@ -45,7 +45,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Navigate to Signup Screen
         buttonCreateAccount.setOnClickListener(v -> {
-            Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+            Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
             startActivity(intent);
         });
     }
