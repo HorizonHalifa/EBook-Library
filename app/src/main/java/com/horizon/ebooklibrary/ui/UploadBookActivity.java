@@ -3,6 +3,7 @@ package com.horizon.ebooklibrary.ui;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -116,7 +117,7 @@ public class UploadBookActivity extends AppCompatActivity {
         });
 
         // Pick an image file (JPG/PNG)
-        buttonSelectCover.setOnClickListener(v -> pickImageLaunches.launch("image/"));
+        buttonSelectCover.setOnClickListener(v -> pickImageLaunches.launch("image/*"));
 
         buttonSelectPdf.setOnClickListener(v -> pickPdfLauncher.launch("application/pdf"));
 
@@ -135,7 +136,7 @@ public class UploadBookActivity extends AppCompatActivity {
      */
     private void observeViewModel() {
         uploadViewModel.getUploadSuccess().observe(this, success -> {
-            if(success) {
+            if(success!= null && success) {
                 showToast("Book uploaded successfully!");
                 uploadViewModel.clear(); // Clear the state before exit
                 finish(); // Close the screen and return to previous activity
@@ -154,7 +155,13 @@ public class UploadBookActivity extends AppCompatActivity {
      */
     private boolean isValidImage(Uri uri) {
         String type = getContentResolver().getType(uri);
-        return type != null && (type.equals("image/jpeg") || type.equals("image/png"));
+        return type != null && (
+                type.equalsIgnoreCase("image/jpeg") ||
+                        type.equalsIgnoreCase("image/jpg") ||
+                        type.equalsIgnoreCase("image/png") ||
+                        type.equalsIgnoreCase("image/x-png")
+        );
+
     }
 
     /**

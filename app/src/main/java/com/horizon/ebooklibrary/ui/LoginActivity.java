@@ -2,6 +2,7 @@ package com.horizon.ebooklibrary.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,9 +89,11 @@ public class LoginActivity extends AppCompatActivity {
     private void observeViewModel() {
         loginViewModel.getLoginResult().observe(this, loginResponse -> {
             if(loginResponse != null) {
+                Log.d("LOGIN_RESPONSE", "Role from response: " + loginResponse.getRole());
+                TokenManager.getInstance().saveLoginData(loginResponse);
                 showToast("Login successful!");
                 navigateToMainScreen();
-                loginViewModel.clearLoginResult(); // clears results after success
+               loginViewModel.clearLoginResult(); // clears results after success
             }
         });
 

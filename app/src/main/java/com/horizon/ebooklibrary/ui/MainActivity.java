@@ -3,6 +3,7 @@ package com.horizon.ebooklibrary.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
      * Shows the Upload Book button only if the logged in user is an ADMIN
      */
     private void setupUploadButtonAdmin() {
+        Log.d("TOKEN_ROLE", "Role: " + TokenManager.getInstance().getUserRole());
         if("ADMIN".equals(TokenManager.getInstance().getUserRole())) {
             buttonUploadBook.setVisibility(View.VISIBLE);
             buttonUploadBook.setOnClickListener(v -> {

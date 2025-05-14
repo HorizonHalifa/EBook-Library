@@ -38,6 +38,9 @@
             android:exported="false" /> <!-- MainActivity Activity -->
         <activity
             android:name=".ui.MainActivity"
+            android:exported="false" /> <!-- UploadBookActivity Activity -->
+        <activity
+            android:name=".ui.UploadBookActivity"
             android:exported="false" />
         <service android:name=".service.FirebaseTokenService"
             android:exported="false">

@@ -85,4 +85,5 @@ public class TokenManager {
         editor.remove(KEY_USER_ROLE);
         editor.apply();
     }
+
 }
