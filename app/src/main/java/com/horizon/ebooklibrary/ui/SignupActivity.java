@@ -11,12 +11,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.horizon.ebooklibrary.R;
+import com.horizon.ebooklibrary.viewmodel.SignupViewModel;
 
+/**
+ * UI for user signup screen, handles user input and delegates signup logic to the SignupViewModel.
+ */
 public class SignupActivity extends AppCompatActivity {
-    private EditText editTextName, editTextEmail, editTextPassword;
+
+    //private EditText editTextName, editTextEmail, editTextPassword;
+    private EditText editTextEmail, editTextPassword;
     private Button buttonSignup, buttonBack;
+    private SignupViewModel signupViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,36 +37,56 @@ public class SignupActivity extends AppCompatActivity {
             return insets;
         });
 
-        editTextName = findViewById(R.id.editTextName);
+        initViews();
+        setupViewModel();
+        setupListeners();
+        observeViewModel();
+    }
+
+    private void initViews() {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonSignup = findViewById(R.id.buttonSignup);
         buttonBack = findViewById(R.id.buttonBack);
+    }
 
+    private void setupViewModel() {
+        signupViewModel = new ViewModelProvider(this).get(SignupViewModel.class);
+    }
+
+    private void setupListeners() {
         buttonSignup.setOnClickListener(v -> {
-            String name = editTextName.getText().toString();
-            String email = editTextEmail.getText().toString();
-            String password = editTextPassword.getText().toString();
+            String email = editTextEmail.getText().toString().trim();
+            String password = editTextPassword.getText().toString().trim();
+            signupViewModel.signup(email, password);
+        });
 
-            if(name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(SignupActivity.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
-                return;
+        buttonBack.setOnClickListener(v -> finish());
+    }
+
+    private void observeViewModel() {
+        signupViewModel.getSignupSuccess().observe(this, success -> {
+            if(success != null && success) {
+                showToast("Account created successfully!");
+                signupViewModel.clearSignupSuccess();
+                navigteToLogin();
             }
-
-            /*
-             * TODO: Implement Firebase authentication here or another thing
-             *  For now, simply show a message
-             */
-            Toast.makeText(SignupActivity.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
-
-            // After successful signup, navigate to MainActivity
-            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
         });
 
-        buttonBack.setOnClickListener(v -> {
-            finish();
+        signupViewModel.getErrorMessage().observe(this, error -> {
+            if(error != null) {
+                showToast(error);
+            }
         });
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(SignupActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void navigteToLogin() {
+        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
