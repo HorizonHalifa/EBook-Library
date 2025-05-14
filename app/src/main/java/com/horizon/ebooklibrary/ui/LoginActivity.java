@@ -80,15 +80,17 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Observes login results from the ViewModel class:
+     * If login response is successful, clear the cache and navigate the user to the next screen.
+     * If there is an error, display it.
+     */
     private void observeViewModel() {
         loginViewModel.getLoginResult().observe(this, loginResponse -> {
             if(loginResponse != null) {
                 showToast("Login successful!");
                 navigateToMainScreen();
-
-                // TODO
-                // Optionally clear the success so this doesn't fire again on resume
-                // This requires exposing a clear method in the ViewModel
+                loginViewModel.clearLoginResult(); // clears results after success
             }
         });
 
