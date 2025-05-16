@@ -1,17 +1,26 @@
 package com.horizon.ebooklibrary.model;
 
 public class Book {
-    private final String title;
-    private final String author;
-    private final String description;
-    private final int coverImage; // Resource ID for local images.
+    private long id;
+    private String title;
+    private String author;
+    private  String description;
+    private String coverUrl; // URL to the book cover
+    private String pdfUrl; // URL to the PDF file
 
-    public Book(String title, String author, String description, int coverImage) {
+    public Book() { }
+
+    public Book(long  id, String title, String author, String description, String coverImage, String pdfUrl) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
-        this.coverImage = coverImage;
+        this.coverUrl = coverImage;
+        this.pdfUrl = pdfUrl;
     }
+
+    // Getters:
+    public long getId() { return id; }
 
     public String getTitle() {
         return title;
@@ -25,7 +34,11 @@ public class Book {
         return description;
     }
 
-    public int getCoverImage() {
-        return coverImage;
+    public String getCoverUrl() {
+        return coverUrl;
+    }
+
+    public String getPdfUrl() {
+        return pdfUrl;
     }
 }

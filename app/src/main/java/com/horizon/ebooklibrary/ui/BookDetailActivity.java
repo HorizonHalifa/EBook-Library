@@ -5,20 +5,37 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.horizon.ebooklibrary.R;
+import com.horizon.ebooklibrary.viewmodel.BookDetailViewModel;
 
-// This activity will show the full book details when a user clicks on a book.
+/**
+ * Displays detailed information about a selected book.
+ * Users can:
+ * Read the book (open the PDF).
+ * Mark the book as read / unread.
+ * Return to the previous screen.
+ */
 public class BookDetailActivity extends AppCompatActivity {
+
+    // UI components
     private ImageView imageViewCover;
     private TextView textViewTitle, textViewAuthor, textViewDescription;
-    private Button buttonReadBook, buttonMarkAsRead, buttonBack;
+    private Button buttonReadBook, buttonMarkAsRead, buttonMarkAsUnread, buttonBack;
+    private BookDetailViewModel viewModel;
+
+
+    private long bookId;
+    private String pdfUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,41 +48,60 @@ public class BookDetailActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize Views
+
+        initViews();
+        setupViewModel();
+        setupListeners();
+        loadBookDataFromIntent();
+
+    }
+
+    private void initViews() {
         imageViewCover = findViewById(R.id.imageViewCover);
         textViewTitle = findViewById(R.id.textViewTitle);
         textViewAuthor = findViewById(R.id.textViewAuthor);
         textViewDescription = findViewById(R.id.textViewDescription);
         buttonReadBook = findViewById(R.id.buttonReadBook);
         buttonMarkAsRead = findViewById(R.id.buttonMarkAsRead);
+        buttonMarkAsUnread = findViewById(R.id.buttonMarkAsUnread);
         buttonBack = findViewById(R.id.buttonBack);
+    }
 
-        // Get book details from intent
+    private void setupViewModel() {
+        viewModel = new ViewModelProvider(this).get(BookDetailViewModel.class);
+        viewModel.getOperationMessage().observe(this, message ->
+                Toast.makeText(BookDetailActivity.this, message, Toast.LENGTH_SHORT).show());
+    }
+
+    private void setupListeners() {
+        buttonReadBook.setOnClickListener(v -> {
+            Intent intent = new Intent(this, PdfViewActivity.class);
+            intent.putExtra("pdfFile", pdfUrl);
+            startActivity(intent);
+        });
+
+        buttonMarkAsRead.setOnClickListener(v -> viewModel.markAsRead(bookId));
+        buttonMarkAsUnread.setOnClickListener(v -> viewModel.markAsUnread(bookId));
+        buttonBack.setOnClickListener(v -> finish());
+    }
+
+    private void loadBookDataFromIntent() {
         Intent intent = getIntent();
+        bookId = intent.getLongExtra("bookId", -1);
         String title = intent.getStringExtra("title");
         String author = intent.getStringExtra("author");
         String description = intent.getStringExtra("description");
-        int coverImage = intent.getIntExtra("coverImage", R.drawable.ic_book_placeholder);
+        String coverUrl = intent.getStringExtra("coverUrl");
+        pdfUrl = intent.getStringExtra("pdfUrl");
 
-        // Set data to views
         textViewTitle.setText(title);
         textViewAuthor.setText(author);
         textViewDescription.setText(description);
-        imageViewCover.setImageResource(coverImage);
 
-        // Read Book Button
-        buttonReadBook.setOnClickListener(v -> {
-            Intent intent_read = new Intent(BookDetailActivity.this, PdfViewActivity.class);
-            intent_read.putExtra("pdfFile", "book.pdf"); // TODO: Change this to actual file later.
-            startActivity(intent_read);
-        });
-
-        // Mark As Read Button
-        buttonMarkAsRead.setOnClickListener(v -> {
-            // TODO: Implement Mark As Read Feature
-        });
-
-        // Back Button
-        buttonBack.setOnClickListener(v -> { finish(); });
+        Glide.with(this)
+                .load(coverUrl)
+                .placeholder(R.drawable.ic_book_placeholder)
+                .error(R.drawable.ic_image_error)
+                .into(imageViewCover);
     }
 }

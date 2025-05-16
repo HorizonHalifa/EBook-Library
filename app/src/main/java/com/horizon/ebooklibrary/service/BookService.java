@@ -4,15 +4,23 @@ import com.horizon.ebooklibrary.model.Book;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+
 import retrofit2.Call;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.GET;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
+
+import java.util.List;
 
 /**
  * Retrofit interface for book-related operations.
- * Includes admin-only upload functionality for new books.
+ * Includes:
+ * admin-only upload functionality for new books.
+ * Authenticated read/unread book fetching per user.
  */
 public interface BookService {
 
@@ -36,5 +44,33 @@ public interface BookService {
             @Part MultipartBody.Part coverImage,
             @Part MultipartBody.Part pdfFile
     );
+
+    /**
+     * Fetches a list of books the current user has marked as read.
+     * @param authHeader JWT Bearer token
+     * @return List of all read books for the authenticated user
+     */
+    @GET("/books/read")
+    Call<List<Book>> getReadBooks(@Header("Authorization") String authHeader);
+
+    /**
+     * Fetches a list of books the current user has marked as un-read or yet to have marked as read
+     * @param authHeader JWT Bearer token
+     * @return Lists of all unread books for the authenticated user
+     */
+    @GET("/books/unread")
+    Call<List<Book>> getUnreadBooks(@Header("Authorization") String authHeader);
+
+    /**
+     * Marks a book as read for the authenticated user.
+     */
+    @PUT("/books/{id}/mark-read")
+    Call<String> markAsRead(@Header("Authorization") String authHeader, @Path("id") long bookId);
+
+    /**
+     * Marks a book as unread for the authenticated user.
+     */
+    @PUT("/books/{id}/mark-unread")
+    Call<String> markAsUnread(@Header("Authorization") String authHeader, @Path("id") long bookId);
 
 }

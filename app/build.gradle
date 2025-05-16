@@ -41,9 +41,14 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
+    // Glide - for image loading
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+
+    // firebase
     implementation libs.firebase.messaging
-    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
 
     //  Retrofit for API calls (to communicate with Spring Boot backend)
     implementation(libs.retrofit)

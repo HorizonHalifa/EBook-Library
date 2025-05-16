@@ -22,7 +22,6 @@ public class AuthRepository {
 
     private final AuthService authService;
 
-
     public AuthRepository() {
         authService = ApiClient.getClient().create(AuthService.class);
     }

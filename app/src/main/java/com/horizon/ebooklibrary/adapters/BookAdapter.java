@@ -11,14 +11,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.horizon.ebooklibrary.R;
 import com.horizon.ebooklibrary.model.Book;
 import com.horizon.ebooklibrary.ui.BookDetailActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/* This class extends RecyclerView.Adapter, meaning it controls how items appear in the RecyclerView.
- * It uses a custom ViewHolder to store the views for each book item.
+/**
+ * RecyclerView adapter to display a list of books.
+ * Each book includes title, author, description and cover image,
+ * Tapping a book opens the BookDetailActivity
  */
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
 
@@ -31,13 +35,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
      */
 
 
-    private Context context;
+    private final Context context;
     private List<Book> bookList;
 
     /*
      * The costume ViewHolder class:
      * Hold references to UI elements (textTitle and textAuthor).
-     * findViewById links these to book_item.xml.
      */
     public static class BookViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView, authorTextView, descriptionTextView;
@@ -54,51 +57,66 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
     public BookAdapter(Context context, List<Book> bookList) {
         this.context = context;
-        this.bookList = bookList;
+        this.bookList = bookList != null ? bookList : new ArrayList<>();
     }
 
-    @NonNull
-    @Override
-    /*
+    public void setBooks(List<Book> newBooks) {
+        this.bookList = newBooks != null ? newBooks : new ArrayList<>();
+        notifyDataSetChanged();
+    }
+
+    /**
      * inflate(book_item.xml) -> Creates a view for a single book item.
      * Wrap it in a BookViewHolder -> So it can hold references to it's TextViews.
      */
+    @NonNull
+    @Override
     public BookAdapter.BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.book_item, parent, false);
         return new BookViewHolder(view);
     }
 
-    @Override
-    /*
+
+    /**
      * This method is called when a new book needs to be displayed.
      * Steps:
      * 1. Get the book at position.
      * 2. Set it's title & author in TextViews.
      */
+    @Override
     public void onBindViewHolder(@NonNull BookAdapter.BookViewHolder holder, int position) {
         Book book = bookList.get(position);
         holder.titleTextView.setText(book.getTitle());
         holder.authorTextView.setText(book.getAuthor());
         holder.descriptionTextView.setText(book.getDescription());
-        holder.coverImageView.setImageResource(book.getCoverImage()); // Set image from drawable
 
-        // Handle book click event
+        // Load image from coverUrl using Glide
+        Glide.with(context)
+                        .load(book.getCoverUrl())
+                                .placeholder(R.drawable.ic_book_placeholder)
+                                        .error(R.drawable.ic_image_error)
+                                                .into(holder.coverImageView);
+
+        // Open book details screen on click
         holder.itemView.setOnClickListener(v -> {
             /*
              * When a book is clicked, it starts BookDetailActivity.
              * Passes title, author, description and cover image to the next screen.
              */
-             Intent intent = new Intent(context, BookDetailActivity.class);
-             intent.putExtra("title", book.getTitle());
-             intent.putExtra("author", book.getAuthor());
-             intent.putExtra("description", book.getDescription());
-             intent.putExtra("coverImage", book.getCoverImage());
-             context.startActivity(intent);
+            Intent intent = new Intent(context, BookDetailActivity.class);
+            intent.putExtra("bookId", book.getId());
+            intent.putExtra("title", book.getTitle());
+            intent.putExtra("author", book.getAuthor());
+            intent.putExtra("description", book.getDescription());
+            intent.putExtra("coverUrl", book.getCoverUrl());
+            context.startActivity(intent);
         });
     }
 
+    /**
+     * Returns the total number of books, so the RecyclerView knows how  many to display.
+     */
     @Override
-    // Returns the total number of books, so the RecyclerView knows how  many to display.
     public int getItemCount() {
         return bookList.size();
     }

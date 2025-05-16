@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +23,7 @@ import com.horizon.ebooklibrary.adapters.BookAdapter;
 import com.horizon.ebooklibrary.model.Book;
 import com.horizon.ebooklibrary.service.FirebaseTokenService;
 import com.horizon.ebooklibrary.util.TokenManager;
+import com.horizon.ebooklibrary.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +40,10 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewUnreadBooks, recyclerViewReadBooks;
     private Button buttonUploadBook;
 
-    // Book Lists
-    private List<Book> unreadBooks = new ArrayList<>();
-    private List<Book> readBooks = new ArrayList<>();
-
     // RecyclerView Adapters
     private BookAdapter unreadBooksAdapter, readBooksAdapter;
+
+    private MainViewModel mainViewModel;
 
 
 
@@ -65,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         setupRecyclerView();
         setupUploadButtonAdmin();
-        loadBooks(); // TODO: Replace with real backend call
+        setupViewModel();
+
 
     }
 
@@ -82,14 +84,17 @@ public class MainActivity extends AppCompatActivity {
      * Set up the RecyclerViews with adapters and linear layout managers.
      */
     private void setupRecyclerView() {
+        // Setup empty adapters
+        unreadBooksAdapter = new BookAdapter(this, new ArrayList<>());
+        readBooksAdapter = new BookAdapter(this, new ArrayList<>());
+
+        // Setup Layout managers
         recyclerViewUnreadBooks.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewReadBooks.setLayoutManager(new LinearLayoutManager(this));
 
-        unreadBooksAdapter = new BookAdapter(this, unreadBooks);
-        readBooksAdapter = new BookAdapter(this, readBooks);
-
         recyclerViewUnreadBooks.setAdapter(unreadBooksAdapter);
         recyclerViewReadBooks.setAdapter(readBooksAdapter);
+
     }
 
     /**
@@ -110,30 +115,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Loads dummy data into the read/unread lists.
-     * This method is temporary and will be replaced by real backend fetching.
-     */
-    private void loadBooks() {
-        // TODO: replace this with API call to load books from backend
-        unreadBooks.clear();
-        readBooks.clear();
+    private void setupViewModel() {
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
-        unreadBooks.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", "A novel set in the Roaring Twenties.", R.drawable.ic_book_placeholder));
-        unreadBooks.add(new Book("To Kill a Mockingbird", "Harper Lee", "A powerful novel about racism and justice.", R.drawable.ic_book_placeholder));
-        unreadBooks.add(new Book("1984", "George Orwell", "A dystopian novel about totalitarianism.", R.drawable.ic_book_placeholder));
-        unreadBooks.add(new Book("Moby-Dick", "Herman Melville", "A tale of obsession and revenge at sea.", R.drawable.ic_book_placeholder));
-        unreadBooks.add(new Book("Pride and Prejudice", "Jane Austen", "A classic romantic novel.", R.drawable.ic_book_placeholder));
+        // observe read books
+        mainViewModel.getUnreadBooks().observe(this, books -> {
+            unreadBooksAdapter.setBooks(books);
+        });
 
-        readBooks.add(new Book("סיפורה של מספרת הסיפורים", "חנה קריצמן", "זהו תיאורו של הסיפור המרתק", R.drawable.the_story_tellers_story));
-        readBooks.add(new Book("התמודדות", "אורי כרמי", "זהו תיאורו של הסיפור המרתק", R.drawable.coping));
-        readBooks.add(new Book("ממך למדתי ללכת", "ורד אזולאי", "זהו תיאורו של הסיפור המרתק", R.drawable.from_you_i_learned_to_walk));
+        // observe unread books
+        mainViewModel.getReadBooks().observe(this, books -> {
+            readBooksAdapter.setBooks(books);
+        });
 
-        unreadBooksAdapter.notifyDataSetChanged();
-        readBooksAdapter.notifyDataSetChanged();
+        // observe errors
+        mainViewModel.getErrorMessage().observe(this, error -> {
+            if(error != null) {
+                Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        findViewById(R.id.textViewReadTitle).setVisibility(View.VISIBLE);
-        recyclerViewReadBooks.setVisibility(View.VISIBLE);
-
+        // Start loading books from the backend
+        mainViewModel.loadBooks();
     }
 }
