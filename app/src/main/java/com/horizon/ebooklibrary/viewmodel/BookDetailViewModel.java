@@ -1,5 +1,6 @@
 package com.horizon.ebooklibrary.viewmodel;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -34,12 +35,12 @@ public class BookDetailViewModel extends ViewModel {
         bookService.markAsRead("Bearer " + token, bookId)
                 .enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                         operationMessage.postValue(response.isSuccessful() ? "Marked as Read" : "Failed to mark as read");
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(@NonNull Call<String> call, Throwable t) {
                         operationMessage.postValue("Network error: " + t.getMessage());
                     }
                 });
@@ -55,13 +56,13 @@ public class BookDetailViewModel extends ViewModel {
         bookService.markAsUnread("Bearer " + token, bookId)
                 .enqueue(new Callback<String>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                         operationMessage.postValue(response.isSuccessful() ? "Marked as Unread" : "Failed to mark as unread");
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-
+                    public void onFailure(@NonNull Call<String> call, Throwable t) {
+                        operationMessage.postValue("Network error: " + t.getMessage());
                     }
                 });
     }
