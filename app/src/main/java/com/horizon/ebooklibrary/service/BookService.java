@@ -15,6 +15,7 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Retrofit interface for book-related operations.
@@ -65,12 +66,12 @@ public interface BookService {
      * Marks a book as read for the authenticated user.
      */
     @PUT("/books/{id}/mark-read")
-    Call<String> markAsRead(@Header("Authorization") String authHeader, @Path("id") long bookId);
+    Call<Map<String, String>> markAsRead(@Header("Authorization") String authHeader, @Path("id") long bookId);
 
     /**
      * Marks a book as unread for the authenticated user.
      */
     @PUT("/books/{id}/mark-unread")
-    Call<String> markAsUnread(@Header("Authorization") String authHeader, @Path("id") long bookId);
+    Call<Map<String, String>> markAsUnread(@Header("Authorization") String authHeader, @Path("id") long bookId);
 
 }

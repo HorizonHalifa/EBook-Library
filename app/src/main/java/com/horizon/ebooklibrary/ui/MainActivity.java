@@ -72,6 +72,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * refreshes the RecyclerViews when the activity is resumed to show updated state of books.
+     * useful when leaving the activity to the BookDetail activity and marking a book as read unread
+     * and then returning to this activity.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mainViewModel != null) {
+            mainViewModel.loadBooks(); // Reload the latest state of books
+        }
+    }
+
+
+    /**
      * Binds all view references from the layout
      */
     private void initViews() {
@@ -96,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewReadBooks.setAdapter(readBooksAdapter);
 
     }
+
 
     /**
      * Shows the Upload Book button only if the logged in user is an ADMIN

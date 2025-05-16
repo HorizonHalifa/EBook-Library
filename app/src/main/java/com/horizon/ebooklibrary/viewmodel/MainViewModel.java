@@ -57,7 +57,7 @@ public class MainViewModel extends ViewModel {
         bookRepository.getUnreadBooks(new BookRepository.BookCallback() {
             @Override
             public void onSuccess(List<Book> books) {
-                readBooks.postValue(books);
+                unreadBooks.postValue(books);
             }
 
             @Override
