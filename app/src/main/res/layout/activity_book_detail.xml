@@ -93,6 +93,17 @@
                 android:layout_marginTop="8dp"/>
 
             <Button
+                android:id="@+id/buttonDeleteBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete Book"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:textColor="@android:color/white"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"/>
+
+            <Button
                 android:id="@+id/buttonBack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

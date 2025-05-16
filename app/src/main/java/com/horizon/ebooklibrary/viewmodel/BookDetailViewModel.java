@@ -25,6 +25,7 @@ public class BookDetailViewModel extends ViewModel {
 
     private final BookService bookService;
     private final MutableLiveData<String> operationMessage = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> deleteSuccess = new MutableLiveData<>();
 
     // For logging with logcat
     private static final String TAG = "BookDetailViewModel";
@@ -86,7 +87,39 @@ public class BookDetailViewModel extends ViewModel {
                 });
     }
 
+    /**
+     * Makes an API call to delete a book. Only available for "ADMIN" users to provoke.
+     * @param bookId the book ID to delete
+     */
+    public void deleteBook(long bookId) {
+        String token = TokenManager.getInstance().getAccessToken();
+        Log.d(TAG, "User role " + TokenManager.getInstance().getUserRole());
+        Log.d(TAG, "Deleting book ID: " + bookId);
+        Log.d(TAG, "Token being used: " + token);
+
+        bookService.deleteBook("Bearer " + token, bookId)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                        if(response.isSuccessful()) {
+                            deleteSuccess.postValue(true);
+                            operationMessage.postValue("Book deleted successfully.");
+                        } else {
+                            Log.e(TAG, "Got response: " + response);
+                            operationMessage.postValue("Failed to delete book.");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+                        Log.e(TAG, "deleteBook() network error", t);
+                        operationMessage.postValue("Network error: " + t.getMessage());
+                    }
+                });
+    }
+
     public LiveData<String> getOperationMessage() {
         return operationMessage;
     }
+
 }

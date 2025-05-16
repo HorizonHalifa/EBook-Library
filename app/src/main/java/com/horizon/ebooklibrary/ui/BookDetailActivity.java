@@ -2,6 +2,7 @@ package com.horizon.ebooklibrary.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.horizon.ebooklibrary.R;
+import com.horizon.ebooklibrary.util.TokenManager;
 import com.horizon.ebooklibrary.viewmodel.BookDetailViewModel;
 
 /**
@@ -30,7 +32,7 @@ public class BookDetailActivity extends AppCompatActivity {
     // UI components
     private ImageView imageViewCover;
     private TextView textViewTitle, textViewAuthor, textViewDescription;
-    private Button buttonReadBook, buttonMarkAsRead, buttonMarkAsUnread, buttonBack;
+    private Button buttonReadBook, buttonMarkAsRead, buttonMarkAsUnread, buttonDeleteBook, buttonBack;
     private BookDetailViewModel viewModel;
 
 
@@ -64,6 +66,7 @@ public class BookDetailActivity extends AppCompatActivity {
         buttonReadBook = findViewById(R.id.buttonReadBook);
         buttonMarkAsRead = findViewById(R.id.buttonMarkAsRead);
         buttonMarkAsUnread = findViewById(R.id.buttonMarkAsUnread);
+        buttonDeleteBook = findViewById(R.id.buttonDeleteBook);
         buttonBack = findViewById(R.id.buttonBack);
     }
 
@@ -79,6 +82,13 @@ public class BookDetailActivity extends AppCompatActivity {
             intent.putExtra("pdfFile", pdfUrl);
             startActivity(intent);
         });
+
+        if("ADMIN".equals(TokenManager.getInstance().getUserRole())) {
+            buttonDeleteBook.setVisibility(View.VISIBLE);
+            buttonDeleteBook.setOnClickListener(v -> viewModel.deleteBook(bookId));
+        } else {
+            buttonDeleteBook.setVisibility(View.GONE);
+        }
 
         buttonMarkAsRead.setOnClickListener(v -> viewModel.markAsRead(bookId));
         buttonMarkAsUnread.setOnClickListener(v -> viewModel.markAsUnread(bookId));
