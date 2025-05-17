@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="@string/book_title_upload"
+                android:importantForAutofill="no"
                 android:inputType="textCapWords"
                 android:minHeight="48dp" />
 
@@ -36,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:hint="@string/author"
-                android:inputType="textCapWords"
+                android:importantForAutofill="no" android:inputType="textCapWords"
                 android:minHeight="48dp" />
 
             <EditText
@@ -46,7 +47,7 @@
                 android:layout_marginBottom="12dp"
                 android:gravity="top"
                 android:hint="@string/description"
-                android:inputType="textMultiLine"
+                android:importantForAutofill="no" android:inputType="textMultiLine"
                 android:minHeight="48dp"
                 android:minLines="1"
                 android:textColorHint="#8D6E63" />

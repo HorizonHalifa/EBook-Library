@@ -3,6 +3,7 @@ package com.horizon.ebooklibrary.model;
 /**
  * Data model representing the login response from the backend.
  * This class is deserialized automatically by Retrofit + Gson.
+ * @noinspection unused
  */
 public class LoginResponse {
     private String accessToken;

@@ -3,6 +3,7 @@ package com.horizon.ebooklibrary.model;
 /**
  * Data model representing the login request sent to the backend.
  * This class is serialized to JSON automatically by Retrofit + Gson.
+ * @noinspection unused
  */
 public class LoginRequest {
 

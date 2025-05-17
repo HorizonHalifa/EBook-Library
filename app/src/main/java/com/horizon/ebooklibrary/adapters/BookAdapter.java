@@ -1,5 +1,6 @@
 package com.horizon.ebooklibrary.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.ViewGroup;
 import android.content.Context;
@@ -43,8 +44,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
      * Hold references to UI elements (textTitle and textAuthor).
      */
     public static class BookViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, authorTextView, descriptionTextView;
-        ImageView coverImageView;
+        final TextView titleTextView;
+        final TextView authorTextView;
+        final TextView descriptionTextView;
+        final ImageView coverImageView;
 
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +63,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         this.bookList = bookList != null ? bookList : new ArrayList<>();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setBooks(List<Book> newBooks) {
         this.bookList = newBooks != null ? newBooks : new ArrayList<>();
         notifyDataSetChanged();

@@ -2,6 +2,7 @@ package com.horizon.ebooklibrary.model;
 
 /**
  * Represents the request body for user registration
+ * @noinspection unused
  */
 public class SignupRequest {
 

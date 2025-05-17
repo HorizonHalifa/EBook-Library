@@ -1,5 +1,6 @@
 package com.horizon.ebooklibrary.model;
 
+/** @noinspection unused*/
 public class Book {
     private long id;
     private String title;

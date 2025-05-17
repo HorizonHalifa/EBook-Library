@@ -7,6 +7,7 @@ import com.horizon.ebooklibrary.model.LoginResponse;
 
 /**
  * Helper utility class for storing and retrieving authentication tokens and user role.
+ * @noinspection unused
  */
 public class TokenManager {
 
