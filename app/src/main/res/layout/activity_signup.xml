@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:text="@string/sign_up"
-            android:textColor="#212121" />
+            android:textColor="@color/white" />
 
         <!-- Back Button -->
         <Button
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:text="@string/back_signup"
-            android:textColor="#212121" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

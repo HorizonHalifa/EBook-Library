@@ -42,7 +42,7 @@
             android:layout_marginBottom="5dp"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:text="@string/sign_in"
-            android:textColor="#212121" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/buttonCreateAccount"
@@ -51,7 +51,7 @@
             android:layout_marginBottom="5dp"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:text="@string/create_account"
-            android:textColor="#212121" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
