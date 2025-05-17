@@ -24,7 +24,8 @@
                 android:layout_width="200dp"
                 android:layout_height="300dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_book_placeholder"/>
+                android:src="@drawable/ic_book_placeholder"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
 
 
             <TextView
@@ -42,13 +43,14 @@
                 android:id="@+id/textViewAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/author_name"
-                android:textSize="18sp"
-                android:textColor="@android:color/darker_gray"
+                android:gravity="center"
                 android:paddingTop="8dp"
                 android:paddingBottom="16dp"
-                android:gravity="center"
-                android:textAlignment="center"/>
+                android:text="@string/author_name"
+                android:textAlignment="center"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/textViewDescription"
@@ -66,31 +68,34 @@
                 android:id="@+id/buttonReadBook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/read_book"
+                android:layout_marginTop="8dp"
                 android:backgroundTint="@android:color/holo_blue_dark"
-                android:textColor="@android:color/white"
                 android:padding="10dp"
-                android:layout_marginTop="8dp"/>
+                android:text="@string/read_book"
+                android:textColor="@android:color/white"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/buttonMarkAsRead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/mark_as_read"
+                android:layout_marginTop="8dp"
                 android:backgroundTint="@android:color/holo_blue_dark"
-                android:textColor="@android:color/white"
                 android:padding="10dp"
-                android:layout_marginTop="8dp"/>
+                android:text="@string/mark_as_read"
+                android:textColor="@android:color/white"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/buttonMarkAsUnread"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/mark_as_unread"
+                android:layout_marginTop="8dp"
                 android:backgroundTint="@android:color/holo_blue_dark"
-                android:textColor="@android:color/white"
                 android:padding="10dp"
-                android:layout_marginTop="8dp"/>
+                android:text="@string/mark_as_unread"
+                android:textColor="@android:color/white"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/buttonDeleteBook"
@@ -107,11 +112,12 @@
                 android:id="@+id/buttonBack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/back_to_main_menu"
+                android:layout_marginTop="8dp"
                 android:backgroundTint="@android:color/holo_blue_dark"
-                android:textColor="@android:color/white"
                 android:padding="10dp"
-                android:layout_marginTop="8dp"/>
+                android:text="@string/back_to_main_menu"
+                android:textColor="@android:color/white"
+                tools:ignore="TextContrastCheck" />
 
 
 

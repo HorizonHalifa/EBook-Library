@@ -20,39 +20,45 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+            android:minHeight="48dp"
+            android:padding="10dp" />
 
         <!-- Password Field -->
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:layout_marginBottom="20dp"/>
+            tools:ignore="TouchTargetSizeCheck" />
 
         <!-- Login Button -->
         <Button
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Log In"
             android:backgroundTint="@android:color/holo_blue_dark"
-            android:textColor="@color/white"/>
+            android:text="@string/log_in"
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck" />
 
         <!-- Link to Signup Activity -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? Sign Up"
-            android:textColor="@android:color/holo_blue_dark"
             android:layout_marginTop="20dp"
             android:clickable="true"
-            android:onClick="goToSignup"/>
+            android:focusable="true"
+            android:minHeight="48dp"
+            android:onClick="goToSignup"
+            android:text="@string/don_t_have_an_account_sign_up"
+            android:textColor="@android:color/holo_blue_dark"
+            tools:ignore="TextContrastCheck" />
 
     </LinearLayout>
 

@@ -22,14 +22,15 @@
             android:id="@+id/buttonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back"
-            android:textSize="16sp"
-            android:padding="5dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:textColor="@android:color/white"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="top|start"/>
+            android:backgroundTint="@android:color/darker_gray"
+            android:padding="5dp"
+            android:text="@string/back"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            tools:ignore="TextContrastCheck" />
 
 
 

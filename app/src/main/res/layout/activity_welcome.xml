@@ -17,11 +17,11 @@
 
         <!-- App Logo -->
         <ImageView
-            android:id="@+id/imgageViewLogo"
+            android:id="@+id/imageViewLogo"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="20dp"
-            android:contentDescription="App Logo"
+            android:contentDescription="@string/app_logo"
             android:src="@drawable/logo"/>
 
         <!-- App Name -->
@@ -29,7 +29,7 @@
             android:id="@+id/textViewAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="EBook Library"
+            android:text="@string/ebook_library"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/holo_blue_dark"
@@ -39,19 +39,19 @@
             android:id="@+id/buttonSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign In"
+            android:layout_marginBottom="5dp"
             android:backgroundTint="@android:color/holo_blue_dark"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="5dp"/>
+            android:text="@string/sign_in"
+            android:textColor="#212121" />
 
         <Button
             android:id="@+id/buttonCreateAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create Account"
+            android:layout_marginBottom="5dp"
             android:backgroundTint="@android:color/holo_blue_dark"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="5dp"/>
+            android:text="@string/create_account"
+            android:textColor="#212121" />
 
     </LinearLayout>
 
