@@ -17,16 +17,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.horizon.ebooklibrary.R;
 import com.horizon.ebooklibrary.adapters.BookAdapter;
-import com.horizon.ebooklibrary.model.Book;
-import com.horizon.ebooklibrary.service.FirebaseTokenService;
 import com.horizon.ebooklibrary.util.TokenManager;
 import com.horizon.ebooklibrary.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /*
  * This class represents the main activity of the application which is the book list.
@@ -130,18 +126,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Sets up the view model for the class and connects the needed listeners and observers
+     */
     private void setupViewModel() {
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         // observe read books
-        mainViewModel.getUnreadBooks().observe(this, books -> {
-            unreadBooksAdapter.setBooks(books);
-        });
+        mainViewModel.getUnreadBooks().observe(this, books -> unreadBooksAdapter.setBooks(books));
 
         // observe unread books
-        mainViewModel.getReadBooks().observe(this, books -> {
-            readBooksAdapter.setBooks(books);
-        });
+        mainViewModel.getReadBooks().observe(this, books -> readBooksAdapter.setBooks(books));
 
         // observe errors
         mainViewModel.getErrorMessage().observe(this, error -> {

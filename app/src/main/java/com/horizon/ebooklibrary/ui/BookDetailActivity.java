@@ -58,6 +58,9 @@ public class BookDetailActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Binds all view references from the layout
+     */
     private void initViews() {
         imageViewCover = findViewById(R.id.imageViewCover);
         textViewTitle = findViewById(R.id.textViewTitle);
@@ -70,12 +73,18 @@ public class BookDetailActivity extends AppCompatActivity {
         buttonBack = findViewById(R.id.buttonBack);
     }
 
+    /**
+     * Sets up the view model for the class and connects the needed listeners and observers
+     */
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(BookDetailViewModel.class);
         viewModel.getOperationMessage().observe(this, message ->
                 Toast.makeText(BookDetailActivity.this, message, Toast.LENGTH_SHORT).show());
     }
 
+    /**
+     * Sets up button listeners
+     */
     private void setupListeners() {
         buttonReadBook.setOnClickListener(v -> {
             Intent intent = new Intent(this, PdfViewActivity.class);
@@ -95,6 +104,9 @@ public class BookDetailActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(v -> finish());
     }
 
+    /**
+     * Loads book data
+     */
     private void loadBookDataFromIntent() {
         Intent intent = getIntent();
         bookId = intent.getLongExtra("bookId", -1);

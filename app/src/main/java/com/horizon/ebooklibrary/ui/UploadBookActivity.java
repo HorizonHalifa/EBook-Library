@@ -3,7 +3,6 @@ package com.horizon.ebooklibrary.ui;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,7 +40,7 @@ public class UploadBookActivity extends AppCompatActivity {
     // ViewModel handles logic and backend call
     private UploadBookViewModel uploadViewModel;
 
-    /**
+    /*
      * ActivityResultLauncher for selecting a cover image file (JPG or PNG).
      * This uses Android's Activity Result API.
      */
@@ -55,6 +54,10 @@ public class UploadBookActivity extends AppCompatActivity {
                 }
             });
 
+    /*
+     * ActivityResultLauncher for selecting a PDF file.
+     * This uses Android's Activity Result API.
+     */
     private final ActivityResultLauncher<String> pickPdfLauncher =
             registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
                 if(uri != null && isValidPdf(uri)) {

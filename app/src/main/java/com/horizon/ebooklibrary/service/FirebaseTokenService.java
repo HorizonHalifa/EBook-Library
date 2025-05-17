@@ -1,11 +1,10 @@
 package com.horizon.ebooklibrary.service;
-import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import androidx.core.app.ActivityCompat;
+import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -28,7 +27,7 @@ public class FirebaseTokenService extends FirebaseMessagingService{
      *     the same as the one retrieved by {@link FirebaseMessaging#getToken()}.
      */
     @Override
-    public void onNewToken(String token) {
+    public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
         Log.d("TAG", "New FCM token generated");
     }

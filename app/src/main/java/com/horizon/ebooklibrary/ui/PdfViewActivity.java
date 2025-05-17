@@ -83,16 +83,14 @@ public class PdfViewActivity extends AppCompatActivity {
 
                 InputStream inputStream = connection.getInputStream();
 
-                runOnUiThread(() -> {
-                    pdfView.fromStream(inputStream)
-                            .enableSwipe(true) // Allow swiping to move between pages
-                            .swipeHorizontal(false) // Vertical scrolling
-                            .enableDoubletap(true) // Double-tap to zoom
-                            .defaultPage(0) // Open on first page
-                            .enableAntialiasing(true) // Better rendering of text
-                            .scrollHandle(new DefaultScrollHandle(PdfViewActivity.this)) // Add scroll handle
-                            .load();
-                });
+                runOnUiThread(() -> pdfView.fromStream(inputStream)
+                        .enableSwipe(true) // Allow swiping to move between pages
+                        .swipeHorizontal(false) // Vertical scrolling
+                        .enableDoubletap(true) // Double-tap to zoom
+                        .defaultPage(0) // Open on first page
+                        .enableAntialiasing(true) // Better rendering of text
+                        .scrollHandle(new DefaultScrollHandle(PdfViewActivity.this)) // Add scroll handle
+                        .load());
 
 
             } catch(Exception e) {

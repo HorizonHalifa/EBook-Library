@@ -17,7 +17,6 @@ import com.horizon.ebooklibrary.service.FirebaseManager;
  * Navigates to the Login or Signup Screens when clicked
  */
 public class WelcomeActivity extends AppCompatActivity {
-    private Button buttonSignIn, buttonCreateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +33,8 @@ public class WelcomeActivity extends AppCompatActivity {
         FirebaseManager.initializeFCM(this);
 
         // Button click handlers
-        buttonSignIn = findViewById(R.id.buttonSignIn);
-        buttonCreateAccount = findViewById(R.id.buttonCreateAccount);
+        Button buttonSignIn = findViewById(R.id.buttonSignIn);
+        Button buttonCreateAccount = findViewById(R.id.buttonCreateAccount);
 
         // Navigate to Login Screen
         buttonSignIn.setOnClickListener(v -> {

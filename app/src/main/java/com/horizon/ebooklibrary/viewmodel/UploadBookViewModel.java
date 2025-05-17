@@ -64,10 +64,10 @@ public class UploadBookViewModel extends ViewModel {
             String authHeader = "Bearer " + token;
 
             bookService.uploadBook(authHeader, titlePart, authorPart, descriptionPart, coverPart, pdfPart)
-                    .enqueue(new Callback<Book>() {
+                    .enqueue(new Callback<>() {
                         @Override
                         public void onResponse(@NonNull Call<Book> call, @NonNull Response<Book> response) {
-                            if(response.isSuccessful()) {
+                            if (response.isSuccessful()) {
                                 uploadSuccess.postValue(true);
                             } else {
                                 errorMessage.postValue("Upload failed: " + response.code());
@@ -130,7 +130,7 @@ public class UploadBookViewModel extends ViewModel {
     private MultipartBody.Part createMultipartFromUri(Context context, Uri uri, String partName) throws IOException {
         InputStream inputStream = context.getContentResolver().openInputStream(uri);
         if(inputStream == null) {
-            throw new IOException("Unable to open input stream for URI: " + uri.toString());
+            throw new IOException("Unable to open input stream for URI: " + uri);
         }
 
         // Create temporary file in cache directory with correct file extension

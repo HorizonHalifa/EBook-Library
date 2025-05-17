@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiClient {
 
-    // TODO: Change this to the deployed backend URL when that is happening...
+    // Change this to the deployed backend URL when taking out of local development
     private static final String BASE_URL = "http://10.0.2.2:8080"; // 10.0.2.2 is Android Emulator's alias for localhost
 
     private static Retrofit retrofit;

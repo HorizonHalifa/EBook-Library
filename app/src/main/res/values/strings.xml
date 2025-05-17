@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EBook Library</string>
+    <string name="book_title">Book Title</string>
+    <string name="author_name">Author Name</string>
+    <string name="book_description">Book Description</string>
+    <string name="read_book">Read Book</string>
+    <string name="mark_as_read">Mark As Read</string>
+    <string name="mark_as_unread">Mark As Unread</string>
+    <string name="delete_book">Delete Book</string>
+    <string name="back_to_main_menu">Back To Main Menu</string>
 </resources>

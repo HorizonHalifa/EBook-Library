@@ -32,10 +32,10 @@ public class AuthRepository {
      * @param callback Callback to receive success for failure result
      */
     public void login(LoginRequest request, LoginCallback callback) {
-        authService.login(request).enqueue(new Callback<LoginResponse>() {
+        authService.login(request).enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
-                if(response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     // Save tokens via TokenManager
                     TokenManager.getInstance().saveLoginData(response.body());
 

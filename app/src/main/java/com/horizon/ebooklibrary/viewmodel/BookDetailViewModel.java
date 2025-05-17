@@ -43,7 +43,7 @@ public class BookDetailViewModel extends ViewModel {
         Log.d(TAG, "Marking book as Read. ID: " + bookId + ", Token Bearer " + token);
 
         bookService.markAsRead("Bearer " + token, bookId)
-                .enqueue(new Callback<Map<String, String>>() {
+                .enqueue(new Callback<>() {
                     @Override
                     public void onResponse(@NonNull Call<Map<String, String>> call, @NonNull Response<Map<String, String>> response) {
                         if (response.body() != null && response.isSuccessful()) {
@@ -69,7 +69,7 @@ public class BookDetailViewModel extends ViewModel {
         Log.d(TAG, "Marking book as Unread. ID: " + bookId + ", Token Bearer " + token);
 
         bookService.markAsUnread("Bearer " + token, bookId)
-                .enqueue(new Callback<Map<String, String>>() {
+                .enqueue(new Callback<>() {
                     @Override
                     public void onResponse(@NonNull Call<Map<String, String>> call, @NonNull Response<Map<String, String>> response) {
                         if (response.body() != null && response.isSuccessful()) {
@@ -98,10 +98,10 @@ public class BookDetailViewModel extends ViewModel {
         Log.d(TAG, "Token being used: " + token);
 
         bookService.deleteBook("Bearer " + token, bookId)
-                .enqueue(new Callback<Void>() {
+                .enqueue(new Callback<>() {
                     @Override
                     public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                        if(response.isSuccessful()) {
+                        if (response.isSuccessful()) {
                             deleteSuccess.postValue(true);
                             operationMessage.postValue("Book deleted successfully.");
                         } else {

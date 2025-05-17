@@ -17,8 +17,8 @@ import com.google.firebase.messaging.FirebaseMessaging;
  */
 public class FirebaseManager {
 
-    private static final String TAG = "FCM_INIT";
-    private static final String NEW_BOOK_TOPIC = "new_books";
+    // private static final String TAG = "FCM_INIT"; For Logcat
+    // private static final String NEW_BOOK_TOPIC = "new_books"; For Logcat
 
     /**
      * Initializes FCM setup:

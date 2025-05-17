@@ -2,7 +2,6 @@ package com.horizon.ebooklibrary.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import com.horizon.ebooklibrary.model.LoginResponse;
 
@@ -12,7 +11,7 @@ import com.horizon.ebooklibrary.model.LoginResponse;
 public class TokenManager {
 
     private static TokenManager instance;
-    private SharedPreferences prefs;
+    private final SharedPreferences prefs;
 
     private static final String KEY_ACCESS_TOKEN = "access_token";
     private static final String KEY_REFRESH_TOKEN = "refresh_token";

@@ -35,10 +35,10 @@ public class BookRepository {
         String token = TokenManager.getInstance().getAccessToken();
         String authHeader = "Bearer " + token;
 
-        bookService.getReadBooks(authHeader).enqueue(new Callback<List<Book>>() {
+        bookService.getReadBooks(authHeader).enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<List<Book>> call, @NonNull Response<List<Book>> response) {
-                if(response.body() != null && response.isSuccessful()) {
+                if (response.body() != null && response.isSuccessful()) {
                     callback.onSuccess(response.body());
                 } else {
                     callback.onError("Failed to fetch read books. Code: " + response.code());
@@ -62,10 +62,10 @@ public class BookRepository {
         String token = TokenManager.getInstance().getAccessToken();
         String authHeader = "Bearer " + token;
 
-        bookService.getUnreadBooks(authHeader).enqueue(new Callback<List<Book>>() {
+        bookService.getUnreadBooks(authHeader).enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<List<Book>> call, @NonNull Response<List<Book>> response) {
-                if(response.body() != null && response.isSuccessful()) {
+                if (response.body() != null && response.isSuccessful()) {
                     callback.onSuccess(response.body());
                 } else {
                     callback.onError("Failed to fetch unread books. Code: " + response.code());

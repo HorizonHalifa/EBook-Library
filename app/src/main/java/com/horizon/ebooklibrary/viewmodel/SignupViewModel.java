@@ -42,12 +42,12 @@ public class SignupViewModel extends ViewModel{
 
         SignupRequest request = new SignupRequest(email, password);
 
-        authService.signup(request).enqueue(new Callback<Void>() {
+        authService.signup(request).enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     signupSuccess.postValue(true); // Notify UI of success
-                } else if(response.code() == 409 || response.code() == 403) {
+                } else if (response.code() == 409 || response.code() == 403) {
                     errorMessage.postValue("Email already in use");
                 } else {
                     errorMessage.postValue("Signup failed: " + response.code());

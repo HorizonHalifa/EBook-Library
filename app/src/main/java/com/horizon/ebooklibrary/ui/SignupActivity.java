@@ -43,6 +43,9 @@ public class SignupActivity extends AppCompatActivity {
         observeViewModel();
     }
 
+    /**
+     * Binds all view references from the layout
+     */
     private void initViews() {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
@@ -50,10 +53,17 @@ public class SignupActivity extends AppCompatActivity {
         buttonBack = findViewById(R.id.buttonBack);
     }
 
+    /**
+     * Sets up the view model for the class and connects the needed listeners and observers
+     */
     private void setupViewModel() {
         signupViewModel = new ViewModelProvider(this).get(SignupViewModel.class);
     }
 
+
+    /**
+     * Sets up button listeners
+     */
     private void setupListeners() {
         buttonSignup.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString().trim();
@@ -64,12 +74,15 @@ public class SignupActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(v -> finish());
     }
 
+    /**
+     * Sets up the view model for the class and connects the needed listeners and observers
+     */
     private void observeViewModel() {
         signupViewModel.getSignupSuccess().observe(this, success -> {
             if(success != null && success) {
                 showToast("Account created successfully!");
                 signupViewModel.clearSignupSuccess();
-                navigteToLogin();
+                navigateToLogin();
             }
         });
 
@@ -80,11 +93,18 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Shows a message to the user
+     * @param message to display
+     */
     private void showToast(String message) {
         Toast.makeText(SignupActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void navigteToLogin() {
+    /**
+     * Navigates to LoginActivity
+     */
+    private void navigateToLogin() {
         Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
