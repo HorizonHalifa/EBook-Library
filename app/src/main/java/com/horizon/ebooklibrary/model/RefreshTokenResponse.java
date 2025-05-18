@@ -2,6 +2,7 @@ package com.horizon.ebooklibrary.model;
 
 /**
  * This class represents the response from the backend after refreshing a token
+ * @noinspection unused
  */
 public class RefreshTokenResponse {
 

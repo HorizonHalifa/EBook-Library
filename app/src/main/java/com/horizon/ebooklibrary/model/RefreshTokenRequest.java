@@ -2,6 +2,7 @@ package com.horizon.ebooklibrary.model;
 
 /**
  * Sent in the request body to refresh an access token
+ * @noinspection unused, unused
  */
 public class RefreshTokenRequest {
 

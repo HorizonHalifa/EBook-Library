@@ -1,9 +1,5 @@
 package com.horizon.ebooklibrary.network;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.horizon.ebooklibrary.service.AuthService;
 import com.horizon.ebooklibrary.util.TokenManager;
 

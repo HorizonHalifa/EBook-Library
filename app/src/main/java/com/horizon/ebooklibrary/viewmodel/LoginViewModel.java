@@ -1,6 +1,5 @@
 package com.horizon.ebooklibrary.viewmodel;
 
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
