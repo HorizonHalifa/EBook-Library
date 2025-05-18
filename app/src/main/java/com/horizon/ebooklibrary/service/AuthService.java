@@ -2,6 +2,8 @@ package com.horizon.ebooklibrary.service;
 
 import com.horizon.ebooklibrary.model.LoginRequest;
 import com.horizon.ebooklibrary.model.LoginResponse;
+import com.horizon.ebooklibrary.model.RefreshTokenRequest;
+import com.horizon.ebooklibrary.model.RefreshTokenResponse;
 import com.horizon.ebooklibrary.model.SignupRequest;
 
 import retrofit2.Call;
@@ -29,5 +31,8 @@ public interface AuthService {
      */
     @POST("/auth/signup")
     Call<Void> signup(@Body SignupRequest request);
+
+    @POST("/auth/refresh")
+    Call<RefreshTokenResponse> refreshToken(@Body RefreshTokenRequest request);
 
 }

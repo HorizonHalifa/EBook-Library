@@ -43,6 +43,14 @@ public class TokenManager {
     }
 
     /**
+     * Updates only the access token after a refresh.
+     * @param newAccessToken the new access token received from the server
+     */
+    public void saveAccessToken(String newAccessToken) {
+        prefs.edit().putString(KEY_ACCESS_TOKEN, newAccessToken).apply();
+    }
+
+    /**
      * Saves the login response tokens and role to SharedPreferences.
      * @param response The LoginResponse object from the server.
      */
