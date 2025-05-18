@@ -11,6 +11,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.horizon.ebooklibrary.R;
 import com.horizon.ebooklibrary.service.FirebaseManager;
+import com.horizon.ebooklibrary.util.SessionManager;
+import com.horizon.ebooklibrary.util.TokenManager;
 
 /*
  * Displays Sign In and Create Account buttons.
@@ -23,11 +25,17 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_welcome);
+
+        // Initialization of the SessionManager and TokenManager in the application
+        TokenManager.init(getApplicationContext());
+        SessionManager.init(getApplicationContext());
+
+        // Rest of android studio auto generated onCreate:
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
+        }); // End of android studio auto generate OnCreate.
 
         // Call to the FCM setup
         FirebaseManager.initializeFCM(this);

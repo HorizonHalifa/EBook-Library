@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import com.horizon.ebooklibrary.model.RefreshTokenRequest;
 import com.horizon.ebooklibrary.model.RefreshTokenResponse;
 import com.horizon.ebooklibrary.service.AuthService;
+import com.horizon.ebooklibrary.util.SessionManager;
 import com.horizon.ebooklibrary.util.TokenManager;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class TokenAuthenticator implements Authenticator {
     }
 
     @Override
-    public Request authenticate(@Nullable Route route, @NonNull okhttp3.Response response) throws IOException {
+    public Request authenticate(@Nullable Route route, @NonNull okhttp3.Response response) {
         Log.d(TAG, "Token expired. Attempting to refresh...");
 
         String refreshToken = TokenManager.getInstance().getRefreshToken();
@@ -69,7 +70,7 @@ public class TokenAuthenticator implements Authenticator {
             } else {
                 // Token refresh failed, could be expired or invalid , make user log out
                 Log.e(TAG, "Token refresh failed. Logging out.");
-                TokenManager.getInstance().clearTokens();
+                SessionManager.getInstance().logout();
                 return null;
             }
         } catch (IOException e) {
