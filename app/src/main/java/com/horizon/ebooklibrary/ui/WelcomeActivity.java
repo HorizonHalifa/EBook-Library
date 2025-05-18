@@ -14,6 +14,8 @@ import com.horizon.ebooklibrary.service.FirebaseManager;
 import com.horizon.ebooklibrary.util.SessionManager;
 import com.horizon.ebooklibrary.util.TokenManager;
 
+import java.util.Locale;
+
 /*
  * Displays Sign In and Create Account buttons.
  * Navigates to the Login or Signup Screens when clicked

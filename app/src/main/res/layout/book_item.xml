@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/book_title_book_item"
+            android:text="@string/book_title"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textAlignment="viewEnd"/>
@@ -32,7 +32,7 @@
             android:id="@+id/textViewAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/author_name_book_item"
+            android:text="@string/author_name"
             android:textAlignment="viewEnd"
             android:textColor="#8D6E63"
             android:textSize="16sp" />
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="@string/author_name_book_item_2"
+            android:text="@string/author_name"
             android:textAlignment="viewEnd"
             android:textColor="#8D6E63"
             android:textSize="12sp" /> <!-- Allows description to wrap but limits to 3 lines -->

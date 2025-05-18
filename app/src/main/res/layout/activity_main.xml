@@ -25,10 +25,14 @@
                 android:backgroundTint="@android:color/holo_blue_dark"
                 android:textColor="@android:color/white"
                 android:layout_marginBottom="16dp"
+                android:textAlignment="viewStart"
+                android:layout_gravity="start"
                 android:visibility="gone"/> <!-- hidden by default -->
 
             <TextView
                 android:id="@+id/textViewUnreadTitle"
+                android:textAlignment="viewStart"
+                android:layout_gravity="start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/unread_books"
@@ -37,6 +41,7 @@
                 android:layout_marginBottom="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:layoutDirection="ltr"
                 android:id="@+id/recyclerViewUnreadBooks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,6 +50,8 @@
 
             <TextView
                 android:id="@+id/textViewReadTitle"
+                android:textAlignment="viewStart"
+                android:layout_gravity="start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/read_books"
@@ -54,6 +61,7 @@
                 android:visibility="visible"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:layoutDirection="ltr"
                 android:id="@+id/recyclerViewReadBooks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

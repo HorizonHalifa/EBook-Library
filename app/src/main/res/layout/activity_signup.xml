@@ -17,6 +17,8 @@
         <!-- Email Field -->
         <EditText
             android:id="@+id/editTextEmail"
+            android:textAlignment="viewStart"
+            android:layout_gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -29,6 +31,8 @@
         <!-- Password Field -->
         <EditText
             android:id="@+id/editTextPassword"
+            android:textAlignment="viewStart"
+            android:layout_gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -52,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/holo_blue_dark"
-            android:text="@string/back_signup"
+            android:text="@string/back"
             android:textColor="@color/white" />
     </LinearLayout>
 

@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                android:hint="@string/book_title_upload"
+                android:hint="@string/book_title"
                 android:importantForAutofill="no"
                 android:inputType="textCapWords"
                 android:minHeight="48dp" />
@@ -57,7 +57,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/select_cover_image_jpg_png"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:id="@+id/textViewCoverSelected"
@@ -73,7 +75,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/select_pdf_file"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:id="@+id/textViewPdfSelected"
@@ -97,12 +101,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="@string/upload_book_upload"
+        android:text="@string/upload_book"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/buttonBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"/>
 
     <Button
 
@@ -111,12 +117,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
         android:backgroundTint="@android:color/holo_blue_dark"
-        android:text="@string/back_upload"
+        android:text="@string/back"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.horizon.ebooklibrary.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         // Setup UI
         initViews();
         setupViewModel();
+        setLanguageFilters();
         setupListeners();
         observeViewModel();
     }
@@ -77,6 +79,35 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             loginViewModel.login(email, password);
+        });
+    }
+
+    /**
+     * Make sure that users can only use english for logins and signups
+     */
+    private void setLanguageFilters() {
+        editTextEmail.setFilters(new InputFilter[] {
+                (source, start, end, dest, dstart, dend) -> {
+                    for (int i = start; i < end; i++) {
+                        char c = source.charAt(i);
+                        if (!Character.isLetterOrDigit(c) && c != '@' && c != '.' && c != '_') {
+                            return "";
+                        }
+                    }
+                    return null;
+                }
+        });
+
+        editTextPassword.setFilters(new InputFilter[] {
+                (source, start, end, dest, dstart, dend) -> {
+                    for (int i = start; i < end; i++) {
+                        char c = source.charAt(i);
+                        if (!Character.isLetterOrDigit(c) && c != '@' && c != '.' && c != '_') {
+                            return "";
+                        }
+                    }
+                    return null;
+                }
         });
     }
 

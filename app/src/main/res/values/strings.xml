@@ -19,22 +19,15 @@
     <string name="email_signup">Email</string>
     <string name="password_signup">Password</string>
     <string name="sign_up">Sign Up</string>
-    <string name="back_signup">Back</string>
-    <string name="back_upload">Back</string>
-    <string name="upload_book_upload">Upload Book</string>
     <string name="select_pdf_file">Select PDF File</string>
     <string name="no_pdf_selected">No PDF selected</string>
     <string name="no_image_selected">No image selected</string>
     <string name="select_cover_image_jpg_png">Select Cover Image (JPG/PNG)</string>
     <string name="description">Description</string>
     <string name="author">Author</string>
-    <string name="book_title_upload">Book Title</string>
     <string name="app_logo">App Logo</string>
     <string name="create_account">Create Account</string>
     <string name="sign_in">Sign In</string>
     <string name="ebook_library">EBook Library</string>
-    <string name="author_name_book_item">Author Name</string>
-    <string name="book_title_book_item">Book Title</string>
-    <string name="author_name_book_item_2">Author Name</string>
     <string name="book_cover">Book Cover</string>
 </resources>

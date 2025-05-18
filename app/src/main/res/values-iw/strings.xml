@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Ebook Library</string>
+    <string name="book_title">שם הספר</string>
+    <string name="author_name">שם המחבר</string>
+    <string name="book_description">תיאור הספר</string>
+    <string name="read_book">קרא את הספר</string>
+    <string name="mark_as_read">סמן כנקרא</string>
+    <string name="mark_as_unread">סמן כלא נקרא</string>
+    <string name="delete_book">מחק ספר</string>
+    <string name="back_to_main_menu">חזרה לתפריט הראשי</string>
+    <string name="don_t_have_an_account_sign_up">אין לך חשבון? הירשם</string>
+    <string name="log_in">התחברות</string>
+    <string name="password">סיסמה</string>
+    <string name="email">אימייל</string>
+    <string name="upload_book">העלה ספר</string>
+    <string name="unread_books">ספרים שלא נקראו</string>
+    <string name="read_books">ספרים שנקראו</string>
+    <string name="back">חזור</string>
+    <string name="email_signup">אימייל</string>
+    <string name="password_signup">סיסמה</string>
+    <string name="sign_up">הרשמה</string>
+    <string name="select_pdf_file">בחר קובץ PDF</string>
+    <string name="no_pdf_selected">לא נבחר קובץ PDF</string>
+    <string name="no_image_selected">לא נבחרה תמונה</string>
+    <string name="select_cover_image_jpg_png">בחר תמונת כריכה (JPG/PNG)</string>
+    <string name="description">תיאור</string>
+    <string name="author">מחבר</string>
+    <string name="app_logo">לוגו האפליקציה</string>
+    <string name="create_account">צור חשבון</string>
+    <string name="sign_in">התחברות</string>
+    <string name="ebook_library">ספרייה דיגיטלית</string>
+    <string name="book_cover">כריכת ספר</string>
+</resources>

@@ -17,6 +17,8 @@
         <!-- Email Field -->
         <EditText
             android:id="@+id/editTextEmail"
+            android:textAlignment="viewStart"
+            android:layout_gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -29,6 +31,8 @@
         <!-- Password Field -->
         <EditText
             android:id="@+id/editTextPassword"
+            android:textAlignment="viewStart"
+            android:layout_gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -46,12 +50,16 @@
             android:backgroundTint="@android:color/holo_blue_dark"
             android:text="@string/log_in"
             android:textColor="@color/white"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"/>
 
         <!-- Link to Signup Activity -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="center"
             android:layout_marginTop="20dp"
             android:clickable="true"
             android:focusable="true"

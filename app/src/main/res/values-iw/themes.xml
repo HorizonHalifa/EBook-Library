@@ -1,8 +1,8 @@
 <resources>
-    <!-- Base application theme for English (LTR) -->
+    <!-- Base application theme for Hebrew (RTL) -->
     <style name="Base.Theme.EBookLibrary" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Apply English font globally -->
-        <item name="android:fontFamily">@font/english_font</item>
+        <!-- Apply Hebrew font globally -->
+        <item name="android:fontFamily">@font/hebrew_font</item>
 
         <!-- Text direction aligns with system language -->
         <item name="android:textDirection">locale</item>

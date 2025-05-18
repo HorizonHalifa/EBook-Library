@@ -72,7 +72,9 @@
                 android:padding="10dp"
                 android:text="@string/read_book"
                 android:textColor="@android:color/white"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 android:id="@+id/buttonMarkAsRead"
@@ -83,7 +85,9 @@
                 android:padding="10dp"
                 android:text="@string/mark_as_read"
                 android:textColor="@android:color/white"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 android:id="@+id/buttonMarkAsUnread"
@@ -94,7 +98,9 @@
                 android:padding="10dp"
                 android:text="@string/mark_as_unread"
                 android:textColor="@android:color/white"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 android:id="@+id/buttonDeleteBook"
@@ -105,7 +111,9 @@
                 android:textColor="@android:color/white"
                 android:padding="10dp"
                 android:layout_marginTop="8dp"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 android:id="@+id/buttonBack"
@@ -116,7 +124,9 @@
                 android:padding="10dp"
                 android:text="@string/back_to_main_menu"
                 android:textColor="@android:color/white"
-                tools:ignore="TextContrastCheck" />
+                tools:ignore="TextContrastCheck"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"/>
 
 
 
