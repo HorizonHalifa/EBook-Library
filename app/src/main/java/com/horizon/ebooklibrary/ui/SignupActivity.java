@@ -2,6 +2,7 @@ package com.horizon.ebooklibrary.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.horizon.ebooklibrary.R;
+import com.horizon.ebooklibrary.util.InputFilterUtil;
 import com.horizon.ebooklibrary.viewmodel.SignupViewModel;
 
 /**
@@ -51,6 +53,10 @@ public class SignupActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonSignup = findViewById(R.id.buttonSignup);
         buttonBack = findViewById(R.id.buttonBack);
+
+        // Block non-English characters
+        editTextEmail.setFilters(new InputFilter[]{InputFilterUtil.ENGLISH_ONLY_FILTER});
+        editTextPassword.setFilters(new InputFilter[]{InputFilterUtil.ENGLISH_ONLY_FILTER});
     }
 
     /**
