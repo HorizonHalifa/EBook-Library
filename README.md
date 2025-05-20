@@ -25,18 +25,34 @@ This is the Android client for the EBook Library platform, allowing users to bro
 
 ## Requirements
 
-- Android Studio, Recommended (tested on Meerkat)
-- Android emulator, Recommended (tested on Pixel 9 , Android 15.0 "VanillaIceCream")
+- Android Studio (Recommended version: Hedgehog or Meerkat)
+- Android emulator (Tested on: Pixel 9 with Android 15.0 "VanillaIceCream")
 
 ## How to Run
 
-1. Clone the repository:
+1. **Clone this repository**
+2. **Set your backend base URL** inside `network/ApiClient.java`
+    - Default: `http://10.0.2.2:8080/` (to access localhost from Android emulator)
+3. **Set up Firebase (FCM)** — Required
 
-2. Open the project in Android Studio.
+   The file `google-services.json` is **not included** in this repository.
 
-3. Create an emulator or connect a device.
+   To configure it:
+    1. Go to [Firebase Console](https://console.firebase.google.com/)
+    2. Create a Firebase project (or use your existing one)
+    3. Add an **Android app** to the project with package name:
+       ```
+       com.horizon.ebooklibrary
+       ```
+    4. Download the `google-services.json` file
+    5. Place it in your local project at:
+       ```
+       EBookLibrary/app/google-services.json
+       ```
 
-4. Run the app.
+4. Open the project in Android Studio.
+5. Create or select an Android emulator or connect a real device.
+6. Click **Run**.
 
 ## Backend Setup
 
