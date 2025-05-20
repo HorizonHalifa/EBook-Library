@@ -60,7 +60,6 @@ public class TokenAuthenticator implements Authenticator {
                 String newAccessToken = tokenResponse.body().getAccessToken();
 
                 // Save the new access token
-                Log.d(TAG, "Saving new access token" + newAccessToken);
                 TokenManager.getInstance().saveAccessToken(newAccessToken);
 
                 // Retry the original request with the new token

@@ -55,8 +55,6 @@ public class PdfViewActivity extends AppCompatActivity {
             Log.e("TAG", "Error: no PDF file received!");
             return;
         }
-        Log.d(TAG, "Loading PDF from URL: " + pdfUrl);
-
         // Start loading the PDF
         displayPdfFromUrl(pdfUrl);
 
