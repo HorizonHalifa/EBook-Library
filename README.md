@@ -2,7 +2,7 @@
 
 This is the Android client for the EBook Library platform, allowing users to browse, read, and manage PDF books. Admin users can upload new books and delete existing books through the app.
 
-## 📱 Features
+## Features
 
 - View available books (title, author, cover image, description)
 - Mark books as read / unread
@@ -13,7 +13,7 @@ This is the Android client for the EBook Library platform, allowing users to bro
 - Secure token storage using SharedPreferences
 - Firebase Cloud Messaging (for push notifications)
 
-## 🛠 Technologies Used
+## Technologies Used
 
 - Java & Android SDK, Recommended (tested on): API 35+
 - Retrofit2 + Gson
@@ -23,12 +23,12 @@ This is the Android client for the EBook Library platform, allowing users to bro
 - MVVM architecture
 - LiveData, RecyclerView
 
-## 🧪 Requirements
+## Requirements
 
 - Android Studio, Recommended (tested on Meerkat)
 - Android emulator, Recommended (tested on Pixel 9 , Android 15.0 "VanillaIceCream")
 
-## 🚀 How to Run
+## How to Run
 
 1. Clone the repository:
 
@@ -38,7 +38,7 @@ This is the Android client for the EBook Library platform, allowing users to bro
 
 4. Run the app.
 
-## 🔐 Backend Setup
+## Backend Setup
 
 This app connects to the backend hosted at: http://10.0.2.2:8080/
 
@@ -46,11 +46,11 @@ This app connects to the backend hosted at: http://10.0.2.2:8080/
 
 Make sure the backend is running with Docker before launching the app. For backend setup, see the [EBook Library Backend Repository](https://github.com/HorizonHalifa/EBook-Library_Backend).
 
-## 📄 License
+## License
 
 This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
 
-## 📝 Notice
+## Notice
 
 See [NOTICE](NOTICE) for third-party library acknowledgements.
 
