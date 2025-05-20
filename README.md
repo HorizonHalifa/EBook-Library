@@ -1,4 +1,4 @@
-# EBook Library — Android Application
+# EBook Library Android Application
 
 This is the Android client for the EBook Library platform, allowing users to browse, read, and manage PDF books. Admin users can upload new books and delete existing books through the app.
 
@@ -51,7 +51,7 @@ This is the Android client for the EBook Library platform, allowing users to bro
        ```
 
 4. Open the project in Android Studio.
-5. Create or select an Android emulator or connect a real device.
+5. Create or select an Android emulator.
 6. Click **Run**.
 
 ## Backend Setup
