@@ -2,6 +2,23 @@
 
 This is the Android client for the EBook Library platform, allowing users to browse, read, and manage PDF books. Admin users can upload new books and delete existing books through the app.
 
+---
+
+## Project Purpose
+The Android app was built as part of a full-stack student project showcasing integration of advanced programming concepts covered in the university course.
+
+It connects to a Spring Boot backend with JWT-secured APIs, and features real-time book tracking, push notifications, and user authentication.
+
+This project demonstrates:
+
+- Android app development with Java
+- MVVM architecture with LiveData and RecyclerView
+- JPA and PostgreSQL (in the backend)
+- JWT-based secure login (access + refresh tokens)
+- JMS-based internal event handling for triggering push notifications
+
+---
+
 ## Features
 
 - View available books (title, author, cover image, description)
